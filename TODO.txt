@@ -1,0 +1,24 @@
+[X] Performance matters as we are expecting a production ready
+component.
+
+[X] You cannot use any 3rd party libraries - only pure React and internal DOM functions.
+
+[X] You should use TypeScript and write proper interfaces and types.
+
+[X] The function to filter the data should be asynchronous. You can use mock data (such as a JSON array), but the function which uses it should be asynchronous (similar to a real REST call).
+
+[X] It should have basic working CSS. No need for anything fancy (such as drop shadows etc).
+
+[X] You need to handle all non-standard/edge use-cases - it should have a perfect user-experience.
+
+[X] Highlight the matching part of the text, in addition to showing it.
+
+[] No external state management libraries (refer to #1 as well), only native React method.
+
+[X] Use only functional components with hooks.
+
+[] Shortcuts and hacks are ok - but you have to add comments on what you are doing and why.
+
+[X] Add a README.md file explaining how to run the project.
+
+[] Bonus Point: Load data using a real API call to some resource.

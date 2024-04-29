@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 300px;
+  margin: 300px auto;
+}
+
+.input {
+  width: calc(100% - 40px);
+  padding: 10px 30px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  padding: 8px 12px;
+  border-color: inherit;
+  cursor: pointer;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  position: absolute;
+  background: white;
+  top: 40px;
+}
+
+.item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: #f0f0f0;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+  background-color: yellow;
+}
+
+.error {
+  color: red;
+}
+
+.image {
+    width: 300px;
+}
