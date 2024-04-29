@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { mockData } from "../data/data";
 import { Car } from "../types/types";
 
 import classes from "./AutoComplete.module.css";
 import { highlightMatch } from "./Highlighter";
-
-const fetchSuggestions = async (input: string): Promise<Car[]> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(
-        mockData.filter((item) =>
-          item.name.toLowerCase().includes(input.toLowerCase())
-        )
-      );
-    }, 500);
-  });
-};
+import { fetchSuggestions } from "../util/fetch";
 
 const Autocomplete: React.FC = () => {
   const [input, setInput] = useState("");
