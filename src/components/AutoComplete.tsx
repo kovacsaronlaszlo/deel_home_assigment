@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import classes from "./AutoComplete.module.css";
-import { highlightMatch } from "./Highlighter";
 import { AutoCompleteContext } from "../context/AutoCompleteContext";
+import Input from "./assets/Input";
+import InputRemoveButton from "./assets/InputRemoveButton";
+import List from "./assets/List";
+import Message from "./assets/Message";
 
-const useAutoCompleteContext = () => {
+export const useAutoCompleteContext = () => {
   const ctx = useContext(AutoCompleteContext);
   if (!ctx) {
     throw new Error(
@@ -14,50 +17,19 @@ const useAutoCompleteContext = () => {
   return ctx;
 };
 
-const Autocomplete: React.FC = () => {
-  const { input, setChoosed, choosed, setInput, data } =
-    useAutoCompleteContext();
-
-  function removeHandler() {
-    setChoosed(null);
-    setInput("");
-  }
+const Autocomplete = () => {
+  const { input, choosed, data } = useAutoCompleteContext();
 
   return (
     <div className={classes.container}>
       <div>
-        <input
-          type="text"
-          value={choosed ? choosed.name : input}
-          onChange={(e) => setInput(e.target.value)}
-          className={classes.input}
-        />
-        {input.length > 0 && (
-          <button
-            type="button"
-            className={classes.button}
-            onClick={removeHandler}
-          >
-            X
-          </button>
-        )}
+        <Autocomplete.Input />
+        <Autocomplete.InputRemoveButton />
       </div>
+      <Autocomplete.List />
 
-      {input.length > 0 && choosed === null && data.length > 0 && (
-        <ul className={classes.list}>
-          {data.map((item) => (
-            <li
-              key={item.id}
-              className={classes.item}
-              onClick={() => setChoosed(item)}
-            >
-              {highlightMatch(item.name, input, classes.highlight)}
-            </li>
-          ))}
-        </ul>
-      )}
       {data.length === 0 && input !== "" && (
-        <small className={classes.error}>There is no such car!</small>
+        <Autocomplete.Message>There is no such car!</Autocomplete.Message>
       )}
       {choosed && (
         <img src={choosed.url} alt={choosed.name} className={classes.image} />
@@ -67,3 +39,8 @@ const Autocomplete: React.FC = () => {
 };
 
 export default Autocomplete;
+
+Autocomplete.Input = Input;
+Autocomplete.InputRemoveButton = InputRemoveButton;
+Autocomplete.List = List;
+Autocomplete.Message = Message;

@@ -1,11 +1,7 @@
-import React, {
-  createContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { Car, ContextType } from "../types/types";
 import { fetchSuggestions } from "../util/fetch";
+import styleClasses from "../components/AutoComplete.module.css"
 
 export const AutoCompleteContext = createContext<ContextType | null>(null);
 
@@ -26,12 +22,11 @@ const AutoCompleteProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <AutoCompleteContext.Provider
-      value={{ input, setInput, data, choosed, setChoosed }}
+      value={{ input, setInput, data, choosed, setChoosed, styleClasses }}
     >
       {children}
     </AutoCompleteContext.Provider>
   );
 };
-
 
 export default AutoCompleteProvider;

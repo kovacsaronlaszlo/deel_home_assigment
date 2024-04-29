@@ -7,9 +7,10 @@ export type Car = {
 };
 
 export type ContextType = {
-    input: string;
-    setInput: Dispatch<SetStateAction<string>>;
-    data: Car[];
-    choosed: Car | null;
-    setChoosed: Dispatch<SetStateAction<Car | null>>;
-}
+  input: string;
+  setInput: Dispatch<SetStateAction<string>>;
+  data: Car[];
+  choosed: Car | null;
+  setChoosed: Dispatch<SetStateAction<Car | null>>;
+  styleClasses: CSSModuleClasses
+};
