@@ -21,4 +21,4 @@ component.
 
 [X] Add a README.md file explaining how to run the project.
 
-[] Bonus Point: Load data using a real API call to some resource.
+[x] Bonus Point: Load data using a real API call to some resource.

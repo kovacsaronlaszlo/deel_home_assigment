@@ -1,15 +1,13 @@
-import { mockData } from "../data/data";
 import { Car } from "../types/types";
 
 export const fetchSuggestions = async (input: string): Promise<Car[]> => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(
-          mockData.filter((item) =>
-            item.name.toLowerCase().includes(input.toLowerCase())
-          )
-        );
-      }, 500);
-    });
-  };
-  
+  if (!input) return [];
+
+  const response = await fetch(
+    `http://localhost:3000/cars?name=${encodeURIComponent(input)}`
+  );
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
+};

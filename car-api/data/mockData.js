@@ -1,6 +1,4 @@
-import { Car } from "../types/types";
-
-export const mockData: Car[] = [
+const cars = [
   {
     id: 1,
     name: "Ford",
@@ -42,3 +40,5 @@ export const mockData: Car[] = [
     url: "https://cdn-7.motorsport.com/images/amp/2Qzr78mY/s1000/peugeot-hypercar-9x8-1.jpg",
   },
 ];
+
+module.exports = cars;
