@@ -13,7 +13,7 @@ component.
 
 [X] Highlight the matching part of the text, in addition to showing it.
 
-[] No external state management libraries (refer to #1 as well), only native React method.
+[X] No external state management libraries (refer to #1 as well), only native React method.
 
 [X] Use only functional components with hooks.
 

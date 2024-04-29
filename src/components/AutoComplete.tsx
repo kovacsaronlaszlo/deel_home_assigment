@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Car } from "../types/types";
+import React, { useContext } from "react";
 
 import classes from "./AutoComplete.module.css";
 import { highlightMatch } from "./Highlighter";
-import { fetchSuggestions } from "../util/fetch";
+import { AutoCompleteContext } from "../context/AutoCompleteContext";
+
+const useAutoCompleteContext = () => {
+  const ctx = useContext(AutoCompleteContext);
+  if (!ctx) {
+    throw new Error(
+      "useAutoComplete must be used within a AutoCompleteProvider"
+    );
+  }
+  return ctx;
+};
 
 const Autocomplete: React.FC = () => {
-  const [input, setInput] = useState("");
-  const [cars, setCars] = useState<Car[]>([]);
-  const [choosed, setChoosed] = useState<Car | null>(null);
-
-  useEffect(() => {
-    if(input !== "") {
-      fetchSuggestions(input).then(setCars);
-    }
-  }, [input]);
+  const { input, setChoosed, choosed, setInput, data } =
+    useAutoCompleteContext();
 
   function removeHandler() {
     setChoosed(null);
@@ -41,24 +43,24 @@ const Autocomplete: React.FC = () => {
         )}
       </div>
 
-      {input.length > 0 && choosed === null && cars.length > 0 && (
+      {input.length > 0 && choosed === null && data.length > 0 && (
         <ul className={classes.list}>
-          {cars.map((car) => (
+          {data.map((item) => (
             <li
-              key={car.id}
+              key={item.id}
               className={classes.item}
-              onClick={() => setChoosed(car)}
+              onClick={() => setChoosed(item)}
             >
-              {highlightMatch(car.name, input, classes.highlight)}
+              {highlightMatch(item.name, input, classes.highlight)}
             </li>
           ))}
         </ul>
       )}
-      {cars.length === 0 && input !== "" &&  (
+      {data.length === 0 && input !== "" && (
         <small className={classes.error}>There is no such car!</small>
       )}
       {choosed && (
-        <img src={choosed.url} alt={choosed.name} className={classes.image}/>
+        <img src={choosed.url} alt={choosed.name} className={classes.image} />
       )}
     </div>
   );

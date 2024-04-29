@@ -1,11 +1,11 @@
 import './App.css'
-import Autocomplete from './components/AutoComplete'
+import AutoCompleteHOC from './components/AutoCompleteHOC'
 
 function App() {
 
   return (
     <>
-      <Autocomplete />
+      <AutoCompleteHOC />
     </>
   )
 }
