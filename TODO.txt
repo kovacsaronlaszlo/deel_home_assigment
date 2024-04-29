@@ -17,7 +17,7 @@ component.
 
 [X] Use only functional components with hooks.
 
-[] Shortcuts and hacks are ok - but you have to add comments on what you are doing and why.
+[-] Shortcuts and hacks are ok - but you have to add comments on what you are doing and why.
 
 [X] Add a README.md file explaining how to run the project.
 
